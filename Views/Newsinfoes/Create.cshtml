@@ -1,0 +1,64 @@
+﻿@model GBBulletin.Models.Newsinfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Newsinfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" > </textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArticlePicture" class="control-label"></label>
+                <input type="file" asp-for="ArticlePicture" class="form-control" />
+                <span asp-validation-for="ArticlePicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Newsarticle" class="control-label"></label>
+                <textarea id="summernote1" asp-for="Newsarticle" class="form-control"></textarea>
+                <span asp-validation-for="Newsarticle" class="text-danger"></span>
+                <script>
+                    $('#summernote1').summernote({
+                        placeholder: 'Hello Bootstrap 4',
+                        tabsize: 2,
+                        height: 50
+                    });
+                </script>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsGenreId" class="control-label"></label>
+                <select asp-for="NewsGenreId" class ="form-control" asp-items="ViewBag.NewsGenreId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

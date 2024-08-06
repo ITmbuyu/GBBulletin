@@ -1,0 +1,82 @@
+﻿@model GBBulletin.Models.NewsStaff
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NewsStaff</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewsStaffName" class="control-label"></label>
+                <input asp-for="NewsStaffName" class="form-control" />
+                <span asp-validation-for="NewsStaffName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsStaffSurname" class="control-label"></label>
+                <input asp-for="NewsStaffSurname" class="form-control" />
+                <span asp-validation-for="NewsStaffSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="staffBio" class="control-label"></label>
+                <textarea id="summernote1" asp-for="staffBio" class="form-control"></textarea>
+                <span asp-validation-for="staffBio" class="text-danger"></span>
+                <script>
+                    $('#summernote1').summernote({
+                        placeholder: 'Hello Bootstrap 4',
+                        tabsize: 2,
+                        height: 50
+                    });
+                </script>
+            </div>
+            <div class="form-group">
+                <label asp-for="staffpicture" class="control-label"></label>
+                <input type="file" asp-for="staffpicture" class="form-control" />
+                <span asp-validation-for="staffpicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="staffemail" class="control-label"></label>
+                <input asp-for="staffemail" class="form-control" />
+                <span asp-validation-for="staffemail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="staffpassword" class="control-label"></label>
+                <input asp-for="staffpassword" class="form-control" />
+                <span asp-validation-for="staffpassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stafftitle" class="control-label"></label>
+                <input asp-for="stafftitle" class="form-control" />
+                <span asp-validation-for="stafftitle" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+            <label asp-for="staffrole" class="control-label"></label>
+            <input asp-for="staffrole" class="form-control" />
+            <span asp-validation-for="staffrole" class="text-danger"></span>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="staffrole" class="control-label"></label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.staffrole, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

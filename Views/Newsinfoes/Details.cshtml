@@ -1,0 +1,117 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+@model GBBulletin.ViewModels.NewsDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="w3l-homeblock2 py-5">
+    <div class="container py-lg-5 py-md-4">
+        <!-- block -->
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="section-title-left mb-4"> <span class="genre">@Model.Newsinfo.NewsGenre.Genre</span> </h3>
+
+                <style>
+                    /* Styles for news article layout */
+
+                    .news-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .news-item {
+                        margin-bottom: 20px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        padding: 20px;
+                        width: 80%;
+                        max-width: 800px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .news-info {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .genre {
+                        color: #007bff; /* Adjust color as needed */
+                    }
+
+                    .title {
+                        margin-bottom: 10px;
+                    }
+
+                    .article-image img {
+                        max-width: 100%;
+                        height: auto;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                    }
+
+                    .article-content {
+                        line-height: 1.6;
+                    }
+                </style>
+
+                <div class="news-container">
+                    <h1>@Model.Newsinfo.Title </h1>
+
+                    <div class="article-info">
+                        
+                        <span class="date">@Model.Newsinfo.DatePublished.ToString()</span>
+                        <span class="date">by @Model.Newsinfo.Author</span>
+                        <!-- You can add more information like publication date, author, etc. here -->
+                    </div>
+
+
+                    <div class="article-image">
+                        <img src="@Model.Newsinfo.ArticlePicture" alt="Article Image">
+                    </div>
+
+
+                    <p class="article-content">@Html.Raw(Model.Newsinfo.Newsarticle)</p>
+
+                    <div>
+                        <a asp-action="Edit" asp-route-id="Model?.NewsinfoId">Edit</a> |
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+
+
+                <div class="mt-4 left-right bg-clr-white p-3">
+                    <h3 class="section-title-left align-self pl-2 mb-sm-0 mb-3">Advertise with us </h3>
+                    <a class="btn btn-style btn-primary" href="#url">Learn more</a>
+                </div>
+            </div>
+            <div class="col-lg-4 trending mt-lg-0 mt-5">
+                <div class="topics">
+                    <h3 class="section-title-left mb-4">Topics</h3>
+                    @foreach (var genre in Model.NewsGenres)
+                    {
+                        <a href="beauty.html" class="topics-list">
+                            <div class="list1">
+                                <img src="@genre.genrepicture" style="width: 100px; height: 100px;" />
+                                <h4>@genre.Genre</h4>
+                            </div>
+                        </a>
+                        <br />
+                    }
+                </div>
+                <div class="sponsers mt-5">
+                    <h3 class="section-title-left mb-4"> Our sponsers</h3>
+                    <a href="#ad-banner"><img src="~/assets/images/ad.jpg" alt="" class="img-fluid radius-image-full" /></a>
+                    <a href="#advertise" class="text-center d-block text-uppercase">Advertise with us </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

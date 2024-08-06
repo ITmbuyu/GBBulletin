@@ -1,0 +1,66 @@
+﻿@model GBBulletin.Models.NewsStaff
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>NewsStaff</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NewsStaffName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NewsStaffName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NewsStaffSurname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NewsStaffSurname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffBio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffBio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffpicture)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffpicture)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffemail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffemail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffpassword)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffpassword)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stafftitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stafftitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffrole)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffrole)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.NewsStaffId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

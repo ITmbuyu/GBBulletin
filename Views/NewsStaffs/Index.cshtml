@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GBBulletin.Models.NewsStaff>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsStaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsStaffSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.staffBio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.staffpicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.staffemail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.staffpassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stafftitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.staffrole)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsStaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsStaffSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staffBio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staffpicture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staffemail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staffpassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stafftitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staffrole)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NewsStaffId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.NewsStaffId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.NewsStaffId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
